@@ -35,7 +35,7 @@ public class Ball{
     public void bounce(){
         if(y < 0)
             speedY *= -1;
-        if(y > 450)
+        if(y > 435)
             speedY *= -1;
 /*
         if(x < 0)

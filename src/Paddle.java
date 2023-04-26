@@ -28,11 +28,11 @@ public class Paddle{
 
     }
     public void moveUp(){
-        y -= 5;
+        y -= 10;
 
     }
     public void moveDown(){
-        y += 5;
+        y += 10;
 
     }
 
