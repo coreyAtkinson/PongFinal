@@ -53,13 +53,33 @@ public class Paddle{
         this.y = y;
     }
 
-    public void collideR(Ball ball){
-        if(( ball.getX() < x + width && ball.getX() > x) && (ball.getY() > y && ball.getY() < y + hight))
+    public boolean collideR(Ball ball){
+        if(( ball.getX() < x + width && ball.getX() > x) && (ball.getY() > y && ball.getY() < y + hight)) {
             ball.changeSpeedX();
+            return true;
+        }
+        return false;
+
     }
 
-    public void collideL(Ball ball){
-        if((ball.getX() > (x -20) && ball.getX() < x + width) && (ball.getY() > y && ball.getY() < y + hight ))
+    public boolean collideL(Ball ball){
+        if((ball.getX() > (x -20) && ball.getX() < x + width) && (ball.getY() > y && ball.getY() < y + hight )) {
             ball.changeSpeedX();
+            return true;
+        }
+        return false;
+    }
+
+    public void setSpeed(int s){
+        xSpeed = s;
+        ySpeed = s;
+    }
+    public int getxSpeed()
+    {
+        return xSpeed;
+    }
+
+    public int getySpeed() {
+        return ySpeed;
     }
 }

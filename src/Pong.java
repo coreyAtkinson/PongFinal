@@ -13,20 +13,17 @@ public class Pong extends JPanel {
     private Ball ball;
     private Paddle p1;
     private Paddle p2;
-JLabel l;
+
+    private int sBoost;
+
 
     public Pong(){
-        ball = new Ball(300,200,1,1,20,100,100,100);
-        p1 = new Paddle(90,20,20,0,100,100,100);
-        p2 = new Paddle(90,20,length - 40,0,100,100,100);
+        ball = new Ball(300,200,1,1,20,255, 255, 255);
+        p1 = new Paddle(90,20,20,0,255, 255, 255);
+        p2 = new Paddle(90,20,length - 40,0,255, 255, 255);
          point1 = 0;
          point2 = 0;
-        l = new JLabel("Test");
-        l.setBackground(Color.CYAN);
-        l.setLocation(100,100);
-        l.setText("helloWorld");
-        l.setSize(40,10);
-        l.isOpaque();
+         sBoost = 1;
 
 
 
@@ -93,7 +90,7 @@ JLabel l;
     }
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
-        setBackground(new Color(255,244,43));
+        setBackground(new Color(209,120,250));
 
         ball.paint(g);
         ball.moveBall();
@@ -101,14 +98,34 @@ JLabel l;
         p1.paint(g);
         p2.paint(g);
 
-        p1.collideR(ball);
-        p2.collideL(ball);
+       if(p1.collideR(ball)){
+           sBoost++;
+       }
+        if(p2.collideL(ball)){
+            sBoost++;
+        }
+        if(sBoost == 3)
+        {
+            ball.setSpeed(ball.getSpeedX() + 1);
+            p1.setSpeed(p1.getxSpeed() + 5);
+            p2.setSpeed(p2.getxSpeed() + 5);
+            sBoost = 0;
+        }
+
+        g.setColor(Color.WHITE);
+
+        g.drawString("Player 1: " + point1 + "    Player 2: " + point2, 250, 20   );
 
         if(ball.getX() < 0)
         {
             point2++;
             System.out.println("P2: " + point2);
             ball.setPosition(300,200);
+            sBoost = 0;
+            ball.setSpeed(1);
+            p1.setSpeed(5);
+            p2.setSpeed(5);
+
         }
 
         if(ball.getX() > 650)
@@ -116,6 +133,9 @@ JLabel l;
             point1++;
             System.out.println("P1: " + point1);
             ball.setPosition(300,200);
+            ball.setSpeed(1);
+            p1.setSpeed(5);
+            p2.setSpeed(5);
         }
         try {
             Thread.sleep(10);

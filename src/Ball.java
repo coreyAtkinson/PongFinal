@@ -35,7 +35,7 @@ public class Ball{
     public void bounce(){
         if(y < 0)
             speedY *= -1;
-        if(y > 435)
+        if(y > 450)
             speedY *= -1;
 /*
         if(x < 0)
@@ -64,5 +64,18 @@ public class Ball{
     {
         this.x = x;
         this.y = y;
+    }
+
+    public void setSpeed(double s){
+        speedX = s;
+        speedY = s;
+    }
+
+    public double getSpeedX() {
+        return speedX;
+    }
+
+    public double getSpeedY() {
+        return speedY;
     }
 }
