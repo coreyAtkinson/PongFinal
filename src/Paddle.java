@@ -16,23 +16,23 @@ public class Paddle{
         this.c1 = c1;
         this.c2 = c2;
         this.c3 = c3;
-        xSpeed = 5;
-        ySpeed  = 5;
+        xSpeed = 20;
+        ySpeed  = 20;
 
     }
 
     public void paint(Graphics g){
 
-       // g.setColor(new Color(c1,c2,c3));
+        g.setColor(new Color(c1,c2,c3));
         g.fillRect(x, y, width, hight);
 
     }
     public void moveUp(){
-        y -= 10;
+        y -= ySpeed;
 
     }
     public void moveDown(){
-        y += 10;
+        y += ySpeed;
 
     }
 
@@ -81,5 +81,9 @@ public class Paddle{
 
     public int getySpeed() {
         return ySpeed;
+    }
+
+    public void movePaddle(){
+        y += ySpeed;
     }
 }

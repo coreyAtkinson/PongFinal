@@ -50,6 +50,7 @@ public class Ball{
     }
     public void changeSpeedX() {
         speedX *= -1;
+        rainbow();
     }
 
     public int getY() {
@@ -78,4 +79,13 @@ public class Ball{
     public double getSpeedY() {
         return speedY;
     }
+
+    public void rainbow(){
+        c1 = (int)(Math.random()*255)+1;
+        c2 = (int)(Math.random()*255)+1;
+        c3 = (int)(Math.random()*255)+1;
+
+    }
+
+
 }
